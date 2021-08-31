@@ -3,7 +3,6 @@ import { makeStyles } from '@material-ui/core/styles';
 import Drawer from '@material-ui/core/Drawer';
 import AppBar from '@material-ui/core/AppBar';
 import CssBaseline from '@material-ui/core/CssBaseline';
-import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import Divider from '@material-ui/core/Divider';
 import List from '@material-ui/core/List';
@@ -12,9 +11,9 @@ import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import InboxIcon from '@material-ui/icons/MoveToInbox';
 import MailIcon from '@material-ui/icons/Mail';
-import ToolBar from '@material-ui/core/ToolBar'; 
+import { Toolbar } from '@material-ui/core';
 import Navigation from './navigation.jsx'
-import SearchIcon from '@material-ui/icons/Search';
+
 import InputBase from '@material-ui/core/InputBase';
 import { alpha } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
@@ -41,15 +40,6 @@ const useStyles = makeStyles((theme) => ({
       width: 'auto',
     },
   },
-  searchIcon: {
-    padding: theme.spacing(0, 22),
-    height: '100%',
-    position: 'absolute',
-    pointerEvents: 'none',
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
   appBar: {
     zIndex: theme.zIndex.drawer + 1,
   },
@@ -69,22 +59,13 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function ClippedDrawer() {
+export default function Sidebar() {
   const classes = useStyles();
 
   return (
-    <div className={classes.root}>
-      <CssBaseline />
-      <AppBar position="fixed" className={classes.appBar}>
-        <Toolbar>
-          <Typography variant="h6" noWrap>
-            Clipped drawer
-          </Typography>
-        </Toolbar>
-      </AppBar>
       <Drawer
         className={classes.drawer}
-        anchor='right'
+        anchor='left'
         variant="permanent"
         classes={{
           paper: classes.drawerPaper,
@@ -93,9 +74,6 @@ export default function ClippedDrawer() {
         <Toolbar />
         <div className={classes.drawerContainer}>
         <div className={classes.search}>
-            <div className={classes.searchIcon}>
-              <SearchIcon />
-            </div>
             <InputBase
               placeholder="Search…"
               classes={{
@@ -106,13 +84,14 @@ export default function ClippedDrawer() {
             />
           </div>
           <Divider/>
-          <Person/>
+            <Person name="Jordan Meany"/>
+            <Person name='Oleg Chef'/>
+            <Person name='Michelle Pep'/>
+            <Person name='Jacob Sleep'/>
+            <Person name='Nicholas Rains Alot'/>
           <Divider />
               <Button variant="contained" color="primary">Add New User</Button>
         </div>
       </Drawer>
-      <main className={classes.content}>
-      </main>
-    </div>
-  );
-}
+
+  )}
